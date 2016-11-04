@@ -1,3 +1,4 @@
+.gitignore
 /node_modules
 /public/storage
 /vendor
@@ -5,3 +6,6 @@
 Homestead.json
 Homestead.yaml
 .env
+
+
+.vagrant/
