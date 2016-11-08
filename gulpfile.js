@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue-2');
+// require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +13,25 @@ require('laravel-elixir-vue-2');
  |
  */
 
-elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+// elixir(mix => {
+//     mix.sass('app.scss')
+//        .webpack('app.js');
+// });
+
+elixir(function(mix) {
+    //css
+    mix.styles([
+        'bootstrap.css',
+        ],
+            'public/css/main.css'
+    );
+
+    mix.scripts([
+        'jquery.js',
+        'bootstrap.js',
+        ],
+            'public/js/main.js'
+    );
+
+    mix.copy('resources/assets/fonts', 'public/fonts');
 });
