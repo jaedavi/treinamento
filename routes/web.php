@@ -19,10 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/test','TestController@index');
-Route::get('members', 'MembersController@index');
-// Route::get('members/create', 'MemberController@create');
-Route::get('/members/store','MemberController@store');
+Route::get('members', ['as' => 'members.index', 'uses' => 'MembersController@index']);
+Route::get('members/create', ['as' => 'members.create', 'uses' => 'MembersController@create']);
+Route::post('/members/store',['as' => 'members.store', 'uses' => 'MembersController@store']);
 
-Route::get('members/form', function() {
-    return view('members.form');
-});
+
+// Route::get('members/form', function() {
+//     return view('members.form');
+// });

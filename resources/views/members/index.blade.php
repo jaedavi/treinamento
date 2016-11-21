@@ -2,7 +2,8 @@
 
 @section('content')
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="/members/form" target="blank" title ="cadastro de novo sócio">NEW CADASTRE:</a></li>
+      {{-- <li role="presentation" class="active"><a href="/members/create" target="blank" title ="cadastro de novo sócio">NEW CADASTRE:</a></li> --}}
+      <a href="/members/create">Novo</a>
     </ul>
     <table class="table">
         <thead>
