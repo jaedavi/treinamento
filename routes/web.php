@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test','TestController@index');
 Route::get('members', 'MembersController@index');
 // Route::get('members/create', 'MemberController@create');
-
+Route::get('/members/store','MemberController@store');
 
 Route::get('members/form', function() {
     return view('members.form');

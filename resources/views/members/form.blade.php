@@ -21,9 +21,9 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-date-input" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
+      <label for="date_of_birth" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
       <div class="col-xs-8">
-        <input class="form-control" type="date" value="dd/mm/aaaa" id="date"  required="required">
+        <input class="form-control" type="date" value="dd/mm/aaaa" id="date_of_birth"  required="required">
       </div>
     </div>
     <div class="form-group row">
@@ -45,9 +45,13 @@
       </div>
       </div>
     <div class="form-group row">
-      <label for="states" class="col-xs-2 col-form-label">ESTADO</label>
-      <div class="col-xs-8">
-        <input class="form-control" type="text" value="" id="states"  required="required">
+      <label for="state" class="col-xs-2 col-form-label">ESTADO:</label>
+      <div class="col-xs-5">
+        <input class="form-control" type="text" value="" id="state"  required="required">
+      </div>
+      <label for="uf" class="col-xs-1 col-form-label">UF:</label>
+      <div class="col-xs-2">
+        <input class="form-control" type="text" value="xx" id="uf"  required="required">
       </div>
     </div>
     <div class="row" align="center">
