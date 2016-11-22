@@ -22,9 +22,9 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="date_of_birth" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
+      <label for="birth_day" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
       <div class="col-xs-8">
-        <input class="form-control" type="date" value="dd/mm/aaaa" id="date_of_birth" name="date_of_birth" required="required">
+        <input class="form-control" type="text" value="dd/mm/aaaa" id="birth_day" name="birth_day" required="required">
       </div>
     </div>
     <div class="form-group row">
@@ -39,24 +39,60 @@
         <input class="form-control" type="text" value="" id="number" name="number" required="required">
       </div>
     </div>
-   <div class="form-group row">
-      <label for="city" class="col-xs-2 col-form-label">CIDADE:</label>
-      <div class="col-xs-8">
-        <input class="form-control" type="text" value="" id="city" name="city" required="required">
-      </div>
-      </div>
     <div class="form-group row">
       <label for="state" class="col-xs-2 col-form-label">ESTADO:</label>
       <div class="col-xs-5">
-        <input class="form-control" type="text" value="" id="state" name="state" required="required">
+        <select class="form-control" type="text" value="" id="state" name="state" required="required">
+          <option value=""></option>
+          @foreach($states as $state)
+            <option value="{{ $state->id }}">{{ $state->state }}</option>
+          @endforeach
+        </select>
       </div>
-      <label for="uf" class="col-xs-1 col-form-label">UF:</label>
-      <div class="col-xs-2">
-        <input class="form-control" type="text" value="xx" id="uf" name="uf" required="required">
+    </div>
+    <div class="form-group row">
+      <label for="city" class="col-xs-2 col-form-label">CIDADE:</label>
+      <div class="col-xs-5">
+        <select class="form-control" type="text" value="" id="city" name="city" required="required">
+          <option value=""></option>
+          @foreach($cities as $city)
+            <option value="{{ $city->id }}">{{ $city->city }}</option>
+          @endforeach
+        </select>
       </div>
     </div>
     <div class="row" align="center">
     <button type="submit">Enviar Dados:</button>
 </div>
   </form>
+@stop
+
+@section('scripts')
+    <script>
+  $(document).ready(function() {
+    $('#state').on('change', function() {
+           var stateId = $(this).val();
+
+           $('#city').html($('<option>', {
+               value: '',
+               text: 'Escolha uma cidade'
+           }));
+
+           $.ajax({
+               url: '/cities/' + stateId,
+               type: 'GET',
+           })
+           .done(function(data) {
+               console.log(data);
+               $.each(data.cities, function(i, item) {
+                   console.log(item);
+                    $('#city').append($('<option>', {
+                       value: i,
+                       text: item.city
+                    }));
+               });
+           })
+       });
+  });
+    </script>
 @stop

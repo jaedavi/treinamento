@@ -18,7 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
 Route::get('/test','TestController@index');
+
+Route::resource('cities', 'CitiesController', ['except' => ['show']]);
+Route::get('cities/{stateId}', 'CitiesController@selectCity');
+
 Route::get('members', ['as' => 'members.index', 'uses' => 'MembersController@index']);
 Route::get('members/create', ['as' => 'members.create', 'uses' => 'MembersController@create']);
 Route::post('/members/store',['as' => 'members.store', 'uses' => 'MembersController@store']);

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Members;
 use Illuminate\Http\Request;
-
+use App\State;
+use App\City;
 class MembersController extends Controller
 {
    public function index()
@@ -13,17 +14,20 @@ class MembersController extends Controller
         return view('members.index', compact('members'));
     }
     public function create(){
+        $states = State::orderBy('state')->get();
+        $cities = [];
         $action = route('members.store');
         $method = 'POST';
-        return view('members.form', compact('action', 'method'));
+        return view('members.form', compact('action', 'method','states','cities'));
     }
 
     public function store(Request $request){
         $members = new Members;
         $members->name = $request->name;
         $members->email = $request->email;
-        // $members->phone = $request->phone;
-        // $members->date_of_birth = $request->date_of_birth;
+        $members->phone = $request->phone;
+        $members->birth_day = $request->birth_day;
+        // dd($request);
         // $members->address = $request->address;
         // $members->number = $request->number;
         // $members->city = $request->city;
