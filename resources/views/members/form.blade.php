@@ -28,18 +28,6 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="address" class="col-xs-2 col-form-label">ENDEREÇO:</label>
-      <div class="col-xs-8">
-        <input class="form-control" type="address" value="Rua,Av,travessa" id="address" name="address" required="required">
-      </div>
-      </div>
-    <div class="form-group row">
-      <label for="number" class="col-xs-2 col-form-label">NUMERO:</label>
-      <div class="col-xs-8">
-        <input class="form-control" type="text" value="" id="number" name="number" required="required">
-      </div>
-    </div>
-    <div class="form-group row">
       <label for="state" class="col-xs-2 col-form-label">ESTADO:</label>
       <div class="col-xs-5">
         <select class="form-control" type="text" value="" id="state" name="state" required="required">
@@ -61,6 +49,19 @@
         </select>
       </div>
     </div>
+    <div class="form-group row">
+      <label for="address" class="col-xs-2 col-form-label">ENDEREÇO:</label>
+      <div class="col-xs-8">
+        <input class="form-control" type="address" value="Rua,Av,travessa" id="address" name="address" required="required">
+      </div>
+      </div>
+    <div class="form-group row">
+      <label for="number" class="col-xs-2 col-form-label">NUMERO:</label>
+      <div class="col-xs-8">
+        <input class="form-control" type="text" value="" id="number" name="number" required="required">
+      </div>
+    </div>
+
     <div class="row" align="center">
     <button type="submit">Enviar Dados:</button>
 </div>
@@ -70,10 +71,10 @@
 @section('scripts')
     <script>
   $(document).ready(function() {
-    $('#state').on('change', function() {
+    $('#state').on('change', function() {//pega o elemento states e quando ele mudar vai declarar variavel stateid e pega o valor dela mesmo
            var stateId = $(this).val();
 
-           $('#city').html($('<option>', {
+           $('#city').html($('<option>', {//
                value: '',
                text: 'Escolha uma cidade'
            }));
