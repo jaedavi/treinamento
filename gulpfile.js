@@ -29,6 +29,7 @@ elixir(function(mix) {
     mix.scripts([
         'jquery.js',
         'bootstrap.js',
+        'jquery-ui.js',
         ],
             'public/js/main.js'
     );

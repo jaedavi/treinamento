@@ -24,6 +24,7 @@
     <div class="form-group row">
       <label for="birth_day" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
       <div class="col-xs-8">
+     {{--  <select class="birth_day" type="date" value="" id="birth_day" name="birth_day" required="required"></select> --}}
         <input class="form-control" type="text" value="dd/mm/aaaa" id="birth_day" name="birth_day" required="required">
       </div>
     </div>
@@ -51,13 +52,13 @@
     </div>
     <div class="form-group row">
       <label for="address" class="col-xs-2 col-form-label">ENDEREÇO:</label>
-      <div class="col-xs-8">
-        <input class="form-control" type="address" value="Rua,Av,travessa" id="address" name="address" required="required">
+      <div class="col-xs-6">
+        <input class="form-control" type="address" value="" id="address" name="address" required="required">
       </div>
       </div>
     <div class="form-group row">
       <label for="number" class="col-xs-2 col-form-label">NUMERO:</label>
-      <div class="col-xs-8">
+      <div class="col-xs-4">
         <input class="form-control" type="text" value="" id="number" name="number" required="required">
       </div>
     </div>

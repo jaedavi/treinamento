@@ -5,6 +5,7 @@ use App\Members;
 use Illuminate\Http\Request;
 use App\State;
 use App\City;
+use App\Address;
 class MembersController extends Controller
 {
    public function index()
@@ -22,18 +23,19 @@ class MembersController extends Controller
     }
 
     public function store(Request $request){
-        $members = new Members;
-        $members->name = $request->name;
-        $members->email = $request->email;
-        $members->phone = $request->phone;
-        $members->birth_day = $request->birth_day;
-        // dd($request);
-        // $members->address = $request->address;
-        // $members->number = $request->number;
-        // $members->city = $request->city;
-        // $members->state = $request->state;
-        // $members->uf = $request->uf;
-        $members->save();
+        $member = Members::create([
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            'birth_day'  => $request->birth_day,
+        ]);
+
+        $address = Address::create([
+            'address'     => $request->address,
+            'number'      => $request->number,
+            'member_id'   => $member->id,
+        ]);
+              dd($request);
 
         return redirect()->route('members.index');
     }
