@@ -35,7 +35,7 @@ class MembersController extends Controller
             'number'      => $request->number,
             'member_id'   => $member->id,
         ]);
-              dd($request);
+              // dd($request);
 
         return redirect()->route('members.index');
     }

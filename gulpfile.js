@@ -30,6 +30,7 @@ elixir(function(mix) {
         'jquery.js',
         'bootstrap.js',
         'jquery-ui.js',
+        'jquery.maskedinput.js',
         ],
             'public/js/main.js'
     );

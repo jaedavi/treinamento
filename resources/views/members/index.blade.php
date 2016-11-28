@@ -20,7 +20,7 @@
                     <th class="col-sm-4">{{ $member->email }}</th>
                     <th class="col-sm-4">
                         <button class="btn btn-primary" title ="editar cadastro"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button class="btn btn-success" title ="verificar cadastro"><span class="glyphicon glyphicon-ok"></span></button>
+                        <button class="btn btn-success" title ="verificar cadastro"><span class="glyphicon glyphicon-info-sign"></span></button>
                         <button class="btn btn-dangerous" title ="remover cadastro"><span class="glyphicon glyphicon-remove"></span></button>
                     </th>
                 </tr>

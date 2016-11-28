@@ -18,14 +18,14 @@
     <div class="form-group row">
       <label for="phone" class="col-xs-2 col-form-label">TELEPHONE:</label>
       <div class="col-xs-8">
-        <input class="form-control" type="tel" value="(xx)-xxxx-xxxxx" id="phone" name="phone" required="required">
+        <input class="form-control" type="tel" value="" id="phone" name="phone" required="required">
       </div>
     </div>
     <div class="form-group row">
       <label for="birth_day" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
       <div class="col-xs-8">
      {{--  <select class="birth_day" type="date" value="" id="birth_day" name="birth_day" required="required"></select> --}}
-        <input class="form-control" type="text" value="dd/mm/aaaa" id="birth_day" name="birth_day" required="required">
+        <input class="form-control" type="text" value="" id="birth_day" name="birth_day" required="required">
       </div>
     </div>
     <div class="form-group row">
@@ -72,6 +72,10 @@
 @section('scripts')
     <script>
   $(document).ready(function() {
+    jQuery(function($){
+        $('#phone').mask("(99) 9999-9999");
+        $('#birth_day').mask("99/99/9999");
+    });
     $('#state').on('change', function() {//pega o elemento states e quando ele mudar vai declarar variavel stateid e pega o valor dela mesmo
            var stateId = $(this).val();
 
