@@ -24,10 +24,12 @@ Route::get('/test','TestController@index');
 Route::resource('cities', 'CitiesController', ['except' => ['show']]);
 Route::get('cities/{stateId}', 'CitiesController@selectCity');
 
+
 Route::get('members', ['as' => 'members.index', 'uses' => 'MembersController@index']);
 Route::get('members/create', ['as' => 'members.create', 'uses' => 'MembersController@create']);
 Route::post('/members/store',['as' => 'members.store', 'uses' => 'MembersController@store']);
-
+Route::get('/members/{members}/edit',['as' => 'members.edit', 'uses' =>'MembersController@edit']);
+Route::get('/members/{members}',['as' => 'members.update', 'uses' =>'MembersController@update']);
 
 // Route::get('members/form', function() {
 //     return view('members.form');

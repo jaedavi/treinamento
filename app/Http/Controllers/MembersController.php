@@ -39,4 +39,29 @@ class MembersController extends Controller
 
         return redirect()->route('members.index');
     }
+
+    public function edit ($id){
+        $member = Members::find($id);
+        $states = State::orderBy('state')->get();
+        $address = $member->address;
+        $cities = [];
+        $action = route('members.update',$id);
+        $method = 'PUT';
+        // dd('sdfasdsd');
+        return view('members.form',[
+            'action' =>$action,
+            'method'=>$method,
+            'member'=>$member,
+            'address'=>$address,
+            'states'=>$states,
+            'cities'=>$cities,
+            ]);
+    }
+
+    public function update(Request $request , Members $members ){
+            $members->update ($request->all());
+            $members->address->update($request->address);
+            return redirect()->route('members.index');
+    }
+
 }
