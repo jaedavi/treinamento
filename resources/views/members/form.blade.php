@@ -1,31 +1,34 @@
 @extends('layouts.style')
 
 @section('content')
-  <form class="form-horizontal" method="{{ $method }}" action="{{ $action }}">
-  {{ csrf_field() }}
-    <div class="form-group row">
-      <label for="example-text-input" class="col-xs-2 col-form-label">NOME:</label>
-      <div class="col-xs-8">
-        <input class="form-control" type="text" value="" id="name" name="name" required="required">
+    <form class="form-horizontal" method="POST" action="{{ $action }}">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="{{ $method }}"/>
+            <div class="form-group row">
+                <label for="example-text-input" class="col-xs-2 col-form-label">NOME:</label>
+                <div class="col-xs-8">
+                {{-- {!! dd($member, 'piroka'); !!} --}}
+                <input class="form-control" type="text" value="{{ old('name', $member->exists ? $member->name : null) }}"
+        id="name" name="name" required="required">
       </div>
     </div>
     <div class="form-group row">
       <label for="email" class="col-xs-2 col-form-label">EMAIL:</label>
       <div class="col-xs-8">
-        <input class="form-control" type="email" value="example@example.com" id="email" name="email" required="required">
+        <input class="form-control" type="email" value="{{ old('email', $member->exists ? $member->email : null) }}" id="email" name="email" required="required">
       </div>
     </div>
     <div class="form-group row">
       <label for="phone" class="col-xs-2 col-form-label">TELEPHONE:</label>
       <div class="col-xs-8">
-        <input class="form-control" type="tel" value="(xx)-xxxx-xxxxx" id="phone" name="phone" required="required">
+        <input class="form-control" type="tel" value="" id="phone" name="phone" required="required">
       </div>
     </div>
     <div class="form-group row">
       <label for="birth_day" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
       <div class="col-xs-8">
      {{--  <select class="birth_day" type="date" value="" id="birth_day" name="birth_day" required="required"></select> --}}
-        <input class="form-control" type="text" value="dd/mm/aaaa" id="birth_day" name="birth_day" required="required">
+        <input class="form-control" type="text" value="" id="birth_day" name="birth_day" required="required">
       </div>
     </div>
     <div class="form-group row">
@@ -72,6 +75,10 @@
 @section('scripts')
     <script>
   $(document).ready(function() {
+    jQuery(function($){
+        $('#phone').mask("(99) 9999-9999");
+        $('#birth_day').mask("99/99/9999");
+    });
     $('#state').on('change', function() {//pega o elemento states e quando ele mudar vai declarar variavel stateid e pega o valor dela mesmo
            var stateId = $(this).val();
 
