@@ -1,18 +1,21 @@
 @extends('layouts.style')
 
 @section('content')
-  <form class="form-horizontal" method="{{ $method }}" action="{{ $action }}">
-  {{ csrf_field() }}
-    <div class="form-group row">
-      <label for="example-text-input" class="col-xs-2 col-form-label">NOME:</label>
-      <div class="col-xs-8">
-        <input class="form-control" type="text" value="" id="name" name="name" required="required">
+    <form class="form-horizontal" method="POST" action="{{ $action }}">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="{{ $method }}"/>
+            <div class="form-group row">
+                <label for="example-text-input" class="col-xs-2 col-form-label">NOME:</label>
+                <div class="col-xs-8">
+                {{-- {!! dd($member, 'piroka'); !!} --}}
+                <input class="form-control" type="text" value="{{ old('name', $member->exists ? $member->name : null) }}"
+        id="name" name="name" required="required">
       </div>
     </div>
     <div class="form-group row">
       <label for="email" class="col-xs-2 col-form-label">EMAIL:</label>
       <div class="col-xs-8">
-        <input class="form-control" type="email" value="example@example.com" id="email" name="email" required="required">
+        <input class="form-control" type="email" value="{{ old('email', $member->exists ? $member->email : null) }}" id="email" name="email" required="required">
       </div>
     </div>
     <div class="form-group row">
