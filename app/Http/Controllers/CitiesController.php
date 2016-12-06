@@ -9,7 +9,7 @@ class CitiesController extends Controller
 {
     public function selectCity(Request $request, $stateId)
     {
-       $cities = City::select('city')
+       $cities = City::select('city', 'id')
         ->where('state_id', '=', $stateId)
         ->orderBy('city')
         ->get();

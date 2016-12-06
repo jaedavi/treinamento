@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    protected $fillable = ['address', 'number', 'member_id'];
+    protected $fillable = ['address', 'number', 'member_id','state_id', 'city_id'];
 
     public function member()
    {

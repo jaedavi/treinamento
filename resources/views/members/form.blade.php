@@ -34,7 +34,7 @@
     <div class="form-group row">
       <label for="state" class="col-xs-2 col-form-label">ESTADO:</label>
       <div class="col-xs-5">
-        <select class="form-control" type="text" value="" id="state" name="state" required="required">
+        <select class="form-control" type="text" value="" id="state" name="address[state]" required="required">
           @foreach($states as $state)
             <option value="{{ $state->id }}">{{ $state->state }}</option>
           @endforeach
@@ -45,7 +45,7 @@
     <div class="form-group row">
       <label for="city" class="col-xs-2 col-form-label">CIDADE:</label>
       <div class="col-xs-5">
-        <select class="form-control" type="text" value="" id="city" name="city" required="required">
+        <select class="form-control" type="text" value="" id="city" name="address[city]" required="required">
           {{-- <option value="{{ old('city_id', $city->exists ? $city->city_id : null) == $city->id ? 'selected = "selected"' : '' }}"></option> --}}
           @foreach($cities as $city)
             <option value="{{ $city->id }}">{{ $city->city }}</option>
@@ -56,13 +56,13 @@
     <div class="form-group row">
       <label for="address" class="col-xs-2 col-form-label">ENDEREÇO:</label>
       <div class="col-xs-6">
-        <input class="form-control" type="address" value="{{ old('address', $member->exists ? $member->address->address : null) }}" id="address" name="address" required="required">
+        <input class="form-control" type="address" value="{{ old('address', $member->exists ? $member->address->address : null) }}" id="address" name="address[address]" required="required">
       </div>
       </div>
     <div class="form-group row">
       <label for="number" class="col-xs-2 col-form-label">NUMERO:</label>
       <div class="col-xs-4">
-        <input class="form-control" type="text" value="{{ old('number', $member->exists ? $member->address->number : null) }}" id="number" name="number" required="required">
+        <input class="form-control" type="text" value="{{ old('number', $member->exists ? $member->address->number : null) }}" id="number" name="address[number]" required="required">
       </div>
     </div>
 
