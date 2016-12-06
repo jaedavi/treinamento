@@ -21,24 +21,24 @@
     <div class="form-group row">
       <label for="phone" class="col-xs-2 col-form-label">TELEPHONE:</label>
       <div class="col-xs-8">
-        <input class="form-control" type="tel" value="" id="phone" name="phone" required="required">
+        <input class="form-control" type="tel" value="{{ old('phone', $member->exists ? $member->phone : null) }}" id="phone" name="phone" required="required">
       </div>
     </div>
     <div class="form-group row">
       <label for="birth_day" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
       <div class="col-xs-8">
      {{--  <select class="birth_day" type="date" value="" id="birth_day" name="birth_day" required="required"></select> --}}
-        <input class="form-control" type="text" value="" id="birth_day" name="birth_day" required="required">
+        <input class="form-control" type="text" value="{{ old('birth_day', $member->exists ? $member->birth_day : null) }}" id="birth_day" name="birth_day" required="required">
       </div>
     </div>
     <div class="form-group row">
       <label for="state" class="col-xs-2 col-form-label">ESTADO:</label>
       <div class="col-xs-5">
         <select class="form-control" type="text" value="" id="state" name="state" required="required">
-          <option value=""></option>
           @foreach($states as $state)
             <option value="{{ $state->id }}">{{ $state->state }}</option>
           @endforeach
+          {{-- <option value="{{ old('state_id', $state->exists ? $state->state_id : null) == $state->id ? 'selected = "selected"' : '' }}"></option> --}}
         </select>
       </div>
     </div>
@@ -46,7 +46,7 @@
       <label for="city" class="col-xs-2 col-form-label">CIDADE:</label>
       <div class="col-xs-5">
         <select class="form-control" type="text" value="" id="city" name="city" required="required">
-          <option value=""></option>
+          {{-- <option value="{{ old('city_id', $city->exists ? $city->city_id : null) == $city->id ? 'selected = "selected"' : '' }}"></option> --}}
           @foreach($cities as $city)
             <option value="{{ $city->id }}">{{ $city->city }}</option>
           @endforeach
@@ -56,13 +56,13 @@
     <div class="form-group row">
       <label for="address" class="col-xs-2 col-form-label">ENDEREÇO:</label>
       <div class="col-xs-6">
-        <input class="form-control" type="address" value="" id="address" name="address" required="required">
+        <input class="form-control" type="address" value="{{ old('address', $member->exists ? $member->address->address : null) }}" id="address" name="address" required="required">
       </div>
       </div>
     <div class="form-group row">
       <label for="number" class="col-xs-2 col-form-label">NUMERO:</label>
       <div class="col-xs-4">
-        <input class="form-control" type="text" value="" id="number" name="number" required="required">
+        <input class="form-control" type="text" value="{{ old('number', $member->exists ? $member->address->number : null) }}" id="number" name="number" required="required">
       </div>
     </div>
 
@@ -96,7 +96,7 @@
                $.each(data.cities, function(i, item) {
                    console.log(item);
                     $('#city').append($('<option>', {
-                       value: i,
+                       value: item.id,
                        text: item.city
                     }));
                });
