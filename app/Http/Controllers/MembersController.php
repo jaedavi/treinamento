@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-
 use App\Member;
-
 use App\Address;
 use App\City;
 use App\State;
@@ -21,7 +19,6 @@ class MembersController extends Controller
     public function create(){
         $member = new Member();
         $states = State::orderBy('state')->get();
-        // dd($states);
         $cities = [];
         $action = route('members.store');
         $method = 'POST';
@@ -29,8 +26,7 @@ class MembersController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request->all());
-        $member = Member::create([
+            $member = Member::create([
             'name'       => $request->name,
             'email'      => $request->email,
             'phone'      => $request->phone,
@@ -50,7 +46,6 @@ class MembersController extends Controller
 
     public function edit (Member $member){
         $states = State::orderBy('state')->get();
-        // dd($member->address->toArray());
         $cities = City::where('state_id', $member->address->state_id)->get();
         $action = route('members.update', $member->id);
         $method = 'PUT';
@@ -80,6 +75,13 @@ class MembersController extends Controller
             'city_id'     => $request->address['city'],
         ]);
 
+
+        return redirect()->route('members.index');
+    }
+
+    public function delete($id)
+    {
+        Member::destroy($id);
 
         return redirect()->route('members.index');
     }

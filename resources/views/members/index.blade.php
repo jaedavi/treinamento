@@ -21,10 +21,13 @@
                     <th class="col-sm-4">
                         <a href="/members/{{ $member->id }}/edit"><button class="btn btn-primary" title ="editar cadastro"><span class="glyphicon glyphicon-pencil"></span></button></a>
                         <button class="btn btn-success" title ="verificar cadastro"><span class="glyphicon glyphicon-info-sign"></span></button>
-                        <button class="btn btn-dangerous" title ="remover cadastro"><span class="glyphicon glyphicon-remove"></span></button>
+                        <a href="{{ route('members.destroy', $member->id) }}">
+                            <button class="btn btn-dangerous" title ="remover cadastro"><span class="glyphicon glyphicon-remove"></span></button>
+                        </a>
                     </th>
                 </tr>
             @endforeach
         </tbody>
     </table>
 @stop
+

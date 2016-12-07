@@ -7,7 +7,6 @@
             <div class="form-group row">
                 <label for="example-text-input" class="col-xs-2 col-form-label">NOME:</label>
                 <div class="col-xs-8">
-                {{-- {!! dd($member, 'piroka'); !!} --}}
                 <input class="form-control" type="text" value="{{ old('name', $member->exists ? $member->name : null) }}"
         id="name" name="name" required="required">
       </div>
@@ -27,7 +26,6 @@
     <div class="form-group row">
       <label for="birth_day" class="col-xs-2 col-form-label">DATA DE NASCIMENTO</label>
       <div class="col-xs-8">
-     {{--  <select class="birth_day" type="date" value="" id="birth_day" name="birth_day" required="required"></select> --}}
         <input class="form-control" type="text" value="{{ old('birth_day', $member->exists ? $member->birth_day : null) }}" id="birth_day" name="birth_day" required="required">
       </div>
     </div>
@@ -36,9 +34,8 @@
       <div class="col-xs-5">
         <select class="form-control" type="text" value="" id="state" name="address[state]" required="required">
           @foreach($states as $state)
-            <option value="{{ $state->id }}">{{ $state->state }}</option>
+            <option value="{{ $state->id }}" {{ old('address[state]', $member->exists ? $member->address->state_id : null) == $state->id ? 'selected = "selected"' : '' }}>{{ $state->state }}</option>
           @endforeach
-          {{-- <option value="{{ old('state_id', $state->exists ? $state->state_id : null) == $state->id ? 'selected = "selected"' : '' }}"></option> --}}
         </select>
       </div>
     </div>
@@ -46,9 +43,8 @@
       <label for="city" class="col-xs-2 col-form-label">CIDADE:</label>
       <div class="col-xs-5">
         <select class="form-control" type="text" value="" id="city" name="address[city]" required="required">
-          {{-- <option value="{{ old('city_id', $city->exists ? $city->city_id : null) == $city->id ? 'selected = "selected"' : '' }}"></option> --}}
           @foreach($cities as $city)
-            <option value="{{ $city->id }}">{{ $city->city }}</option>
+            <option value="{{ $city->id }}" {{ old('address[city]', $member->exists ? $member->address->city_id : null) == $city->id ? 'selected = "selected"' : '' }}>{{ $city->city }}</option>
           @endforeach
         </select>
       </div>
@@ -79,10 +75,10 @@
         $('#phone').mask("(99) 9999-9999");
         $('#birth_day').mask("99/99/9999");
     });
-    $('#state').on('change', function() {//pega o elemento states e quando ele mudar vai declarar variavel stateid e pega o valor dela mesmo
+    $('#state').on('change', function() {
            var stateId = $(this).val();
 
-           $('#city').html($('<option>', {//
+           $('#city').html($('<option>', {
                value: '',
                text: 'Escolha uma cidade'
            }));
