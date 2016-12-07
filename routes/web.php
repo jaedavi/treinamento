@@ -30,6 +30,7 @@ Route::get('members/create', ['as' => 'members.create', 'uses' => 'MembersContro
 Route::post('/members/store',['as' => 'members.store', 'uses' => 'MembersController@store']);
 Route::get('/members/{member}/edit',['as' => 'members.edit', 'uses' =>'MembersController@edit']);
 Route::put('/members/{member}',['as' => 'members.update', 'uses' =>'MembersController@update']);
-Route::get('/members/{id}/delete',['as' => 'members.destroy', 'uses' =>'MembersController@delete']);
+Route::get('/members/{member}/delete',['as' => 'members.destroy', 'uses' =>'MembersController@delete']);
+Route::get('/members/{member}/show',['as' => 'members.show', 'uses' =>'MembersController@show']);
 
 

@@ -16,6 +16,15 @@ class MembersController extends Controller
         return view('members.index', compact('members'));
     }
 
+    public function show(Request $request, Member $member)
+    {
+        if ($request->ajax()) {
+            return $member->toArray();
+        }
+
+        return view('members.show', compact('member'));
+    }
+
     public function create(){
         $member = new Member();
         $states = State::orderBy('state')->get();
@@ -79,9 +88,9 @@ class MembersController extends Controller
         return redirect()->route('members.index');
     }
 
-    public function delete($id)
+    public function delete(Member $member)
     {
-        Member::destroy($id);
+        $member->destroy();
 
         return redirect()->route('members.index');
     }
