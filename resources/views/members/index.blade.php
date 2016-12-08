@@ -6,6 +6,10 @@
             var setMember = function(member) {
                 $('#member-name').html(member['name']);
                 $('#member-email').html(member['email']);
+                $('#member-phone').html(member['phone']);
+                $('#member-birth_day').html(member['birth_day']);
+                // $('#member-state').html(member['state']);
+                // $('#member-city').html(member['city']);
             };
 
             $('[data-member-id]').click(function(event) {
@@ -78,10 +82,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Dados complementares de membro</h4>
       </div>
       <div class="modal-body">
+        <h4>NOME:</h4>
         <p id="member-name"></p>
+        <h4>EMAIL:</h4>
+        <p id="member-email"></p>
+        <h4>TELEFONE:</h4>
+        <p id="member-phone"></p>
+        <h4>DATA DE NASCIMENTO:</h4>
+        <p id="member-birth_day"></p>
+        <h4>CIDADE:</h4>
+        <p id="member-city"></p>
+        <h4>ESTADO:</h4>
+        <p id="member-state"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
