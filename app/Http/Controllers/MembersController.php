@@ -12,17 +12,20 @@ class MembersController extends Controller
    public function index()
     {
         $members = Member::orderBy('name')->get();
+        $members = Member::orderBy('name')->paginate(2);
 
         return view('members.index', compact('members'));
     }
 
-    public function show(Request $request, Member $member)
+    public function show(Request $request, Member $member )
     {
+        $state = State::orderBy('state')->get();
+
         if ($request->ajax()) {
             return $member->toArray();
         }
 
-        return view('members.show', compact('member'));
+        return view('members.show', compact('member', 'state'));
     }
 
     public function create(){
@@ -90,7 +93,8 @@ class MembersController extends Controller
 
     public function delete(Member $member)
     {
-        $member->destroy();
+
+        $member->delete();
 
         return redirect()->route('members.index');
     }

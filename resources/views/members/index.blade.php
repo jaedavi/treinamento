@@ -8,8 +8,9 @@
                 $('#member-email').html(member['email']);
                 $('#member-phone').html(member['phone']);
                 $('#member-birth_day').html(member['birth_day']);
-                // $('#member-state').html(member['state']);
-                // $('#member-city').html(member['city']);
+                $('#member-state').html(member['state_name']);
+                $('#member-city').html(member['city_name']);
+
             };
 
             $('[data-member-id]').click(function(event) {
@@ -38,7 +39,7 @@
 
 @section('content')
     <ul class="nav nav-pills">
-      <a href="/members/create">Novo</a>
+      <a class="glyphicon glyphicon-plus" href="/members/create">ADICIONAR NOVO MEMBRO:</a><br>
     </ul>
     <table class="table">
         <thead>
@@ -85,18 +86,18 @@
         <h4 class="modal-title">Dados complementares de membro</h4>
       </div>
       <div class="modal-body">
-        <h4>NOME:</h4>
-        <p id="member-name"></p>
-        <h4>EMAIL:</h4>
-        <p id="member-email"></p>
-        <h4>TELEFONE:</h4>
-        <p id="member-phone"></p>
-        <h4>DATA DE NASCIMENTO:</h4>
-        <p id="member-birth_day"></p>
-        <h4>CIDADE:</h4>
-        <p id="member-city"></p>
-        <h4>ESTADO:</h4>
-        <p id="member-state"></p>
+        <label>NOME: </label>
+        <span id="member-name"></span><br>
+        <label>EMAIL:</label>
+        <span id="member-email"></span><br>
+        <label>TELEFONE: </label>
+        <span id="member-phone"></span><br>
+        <label>DATA DE NASCIMENTO: </label>
+        <span id="member-birth_day"></span><br>
+        <label>CIDADE: </label>
+        <span id="member-city"></span><br>
+        <label>ESTADO:</label>
+        <span id="member-state"></span><br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
